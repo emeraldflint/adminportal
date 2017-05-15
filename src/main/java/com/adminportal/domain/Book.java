@@ -30,6 +30,7 @@ public class Book {
     private String description;
     private int inStockNumber;
 
+    @Transient
     private MultipartFile bookImage;
 
     public Long getId() {
