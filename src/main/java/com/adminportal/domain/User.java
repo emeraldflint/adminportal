@@ -23,7 +23,7 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
-    private String firtName;
+    private String firstName;
     private String lastName;
 
     @Column(name = "email", nullable = false, updatable = false)
@@ -81,12 +81,12 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getFirtName() {
-        return firtName;
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firtName) {
-        this.firtName = firtName;
+        this.firstName = firtName;
     }
 
     public String getLastName() {
@@ -119,10 +119,6 @@ public class User implements UserDetails {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public void setFirtName(String firtName) {
-        this.firtName = firtName;
     }
 
     public Set<UserRole> getUserRoles() {
