@@ -20,7 +20,7 @@ public class Book {
     private String category;
     private int numberOfPages;
     private String format;
-    private int isnb;
+    private int isbn;
     private double shippingWeight;
     private double listPrice;
     private double ourPrice;
@@ -105,12 +105,12 @@ public class Book {
         this.format = format;
     }
 
-    public int getIsnb() {
-        return isnb;
+    public int getIsbn() {
+        return isbn;
     }
 
-    public void setIsnb(int isnb) {
-        this.isnb = isnb;
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
     }
 
     public double getShippingWeight() {
