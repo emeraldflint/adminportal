@@ -51,7 +51,10 @@ public class BookController {
 
     @RequestMapping("/bookList")
     public String bookList(Model model) {
-        //List<Book> bookList = bookService.findAll();
+        List<Book> bookList = bookService.findAll();
+        model.addAttribute("bookList", bookList);
+
+
         return "bookList";
     }
 }
