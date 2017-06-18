@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,8 @@ public class BookController {
         try {
             byte[] bytes = bookImage.getBytes();
             String name = book.getId() + ".png";
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/image/book/" + name)));
+            BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(new File("src/main/resources/static/image/book/" + name)));
             stream.write(bytes);
             stream.close();
         } catch (Exception e) {
@@ -49,6 +51,15 @@ public class BookController {
         return "redirect:bookList";
     }
 
+    @RequestMapping("/bookInfo")
+    public String bookInfo(@RequestParam("id") Long id, Model model) {
+        Book book = bookService.findOne(id);
+        model.addAttribute("book", book);
+
+        return "bookInfo";
+    }
+
+
     @RequestMapping("/bookList")
     public String bookList(Model model) {
         List<Book> bookList = bookService.findAll();
@@ -56,5 +67,13 @@ public class BookController {
 
 
         return "bookList";
+    }
+
+    @RequestMapping("/updateBook")
+    public String updateBook(@RequestParam("id") Long id, Model model) {
+        Book book = bookService.findOne(id);
+        model.addAttribute("book", book);
+
+        return "updateBook";
     }
 }
